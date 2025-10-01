@@ -1,5 +1,6 @@
 package com.vinogradov.demo7.server;
 
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
@@ -10,8 +11,8 @@ import java.util.Map;
 public class LoginServlet extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        resp.sendRedirect("login.html");
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+        req.getRequestDispatcher("login.ftl").forward(req, resp);
     }
 
     @Override
@@ -38,9 +39,9 @@ public class LoginServlet extends HttpServlet {
 
             resp.addCookie(cookie);
 
-            resp.sendRedirect("main.jsp");
+            resp.sendRedirect("main");
         } else {
-            resp.sendRedirect("/login");
+            resp.sendRedirect("login");
         }
     }
 

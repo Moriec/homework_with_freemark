@@ -1,7 +1,7 @@
-package com.vinogradov.demo3.server;
+package com.vinogradov.demo7.server;
 
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.*;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.*;
 
 import java.io.IOException;
 import java.util.Map;

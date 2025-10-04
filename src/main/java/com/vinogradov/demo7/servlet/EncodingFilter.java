@@ -1,4 +1,4 @@
-package com.vinogradov.demo7.server;
+package com.vinogradov.demo7.servlet;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;

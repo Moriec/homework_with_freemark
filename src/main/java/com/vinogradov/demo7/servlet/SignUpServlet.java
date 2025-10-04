@@ -1,4 +1,9 @@
-package com.vinogradov.demo7.server;
+package com.vinogradov.demo7.servlet;
+
+import com.vinogradov.demo7.dao.UserDao;
+import com.vinogradov.demo7.dao.impl.UserDaoImpl;
+import com.vinogradov.demo7.dto.UserRegistrationDto;
+import com.vinogradov.demo7.service.SignUpService;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,7 +16,12 @@ import java.util.Map;
 @WebServlet(name = "SignUp", urlPatterns = "/sign_up")
 public class SignUpServlet extends HttpServlet {
 
-    private static final Map<String, String> users = new HashMap<>();
+    private SignUpService signUpService;
+
+    @Override
+    public void init(){
+        signUpService = (SignUpService) getServletContext().getAttribute("signUpService");
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -22,15 +32,17 @@ public class SignUpServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String login = req.getParameter("login");
         String password = req.getParameter("password");
+        String name = req.getParameter("name");
+        String lastName = req.getParameter("lastname");
 
         // Проверяем, что данные не пустые
         if (login != null && password != null && !login.trim().isEmpty() && !password.trim().isEmpty()) {
-            if (!users.containsKey(login)) {
-                users.put(login, password);
-                System.out.println("New user registered: " + login);
-
+            UserRegistrationDto userRegistrationDto = new UserRegistrationDto(name, lastName, login, password);
+            boolean isRegistration = signUpService.signUp(userRegistrationDto);
+            if(isRegistration){
                 resp.sendRedirect("/login");
-            } else {
+            }
+             else {
                 // Пользователь уже существует
                 resp.sendRedirect("/sign_up");
             }
@@ -38,10 +50,5 @@ public class SignUpServlet extends HttpServlet {
             // Неверные данные
             resp.sendRedirect("/sign_up");
         }
-    }
-
-    // Статический метод для получения Map с пользователями (для использования в LoginServlet)
-    public static Map<String, String> getUsers() {
-        return users;
     }
 }

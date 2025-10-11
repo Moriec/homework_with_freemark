@@ -1,4 +1,5 @@
 package com.vinogradov.demo7.service;
 
-public class CheckLoginService {
+public interface CheckLoginService {
+    boolean checkLogin(String login);
 }

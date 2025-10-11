@@ -36,6 +36,6 @@ public class LogoutServlet extends HttpServlet {
             }
         }
 
-        resp.sendRedirect("index.html");
+        resp.sendRedirect("index.ftl");
     }
 }

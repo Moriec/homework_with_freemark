@@ -7,6 +7,24 @@ public class User {
     private String lastName;
     private String login;
     private String password;
+    private String photoPath;
+
+    public User(String name, String lastName, String login, String password, String photoPath) {
+        this.name = name;
+        this.lastName = lastName;
+        this.login = login;
+        this.password = password;
+        this.photoPath = photoPath;
+    }
+
+    public User(Integer id, String name, String lastName, String login, String password, String photoPath) {
+        this.id = id;
+        this.name = name;
+        this.lastName = lastName;
+        this.login = login;
+        this.password = password;
+        this.photoPath = photoPath;
+    }
 
     public User(Integer id, String name, String lastName, String login, String password) {
         this.id = id;
@@ -45,4 +63,6 @@ public class User {
     public String getPassword() {
         return password;
     }
+
+    public String getPhoto() {return photoPath;}
 }

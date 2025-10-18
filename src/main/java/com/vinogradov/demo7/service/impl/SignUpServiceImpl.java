@@ -22,7 +22,8 @@ public class SignUpServiceImpl implements SignUpService {
                             userRegistrationDto.getName(),
                             userRegistrationDto.getLastName(),
                             userRegistrationDto.getLogin(),
-                            PasswordUtil.encrypt(userRegistrationDto.getPassword())
+                            PasswordUtil.encrypt(userRegistrationDto.getPassword()),
+                            userRegistrationDto.getFileParth()
                     )
             );
             return true;

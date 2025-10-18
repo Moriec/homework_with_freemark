@@ -30,6 +30,7 @@ public class MainServlet extends HttpServlet {
         req.setAttribute("name", userDto.getName());
         req.setAttribute("lastname", userDto.getLastName());
         req.setAttribute("login", userDto.getLogin());
+        req.setAttribute("imagePath", userDto.getFilePath());
 
         System.out.print(userDto.getLastName());
         req.getRequestDispatcher("main.ftl").forward(req, resp);

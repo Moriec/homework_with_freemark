@@ -5,6 +5,15 @@ public class UserRegistrationDto {
     private String lastName;
     private String login;
     private String password;
+    private String fileParth;
+
+    public UserRegistrationDto(String name, String lastName, String login, String password, String fileParth) {
+        this.name = name;
+        this.lastName = lastName;
+        this.login = login;
+        this.password = password;
+        this.fileParth = fileParth;
+    }
 
     public UserRegistrationDto(String name, String lastName, String login, String password) {
         this.name = name;
@@ -27,5 +36,9 @@ public class UserRegistrationDto {
 
     public String getPassword() {
         return password;
+    }
+
+    public String getFileParth() {
+        return fileParth;
     }
 }

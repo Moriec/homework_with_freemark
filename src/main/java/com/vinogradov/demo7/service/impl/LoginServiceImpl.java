@@ -25,7 +25,8 @@ public class LoginServiceImpl implements LoginService {
             return new UserDto(
                     user.getName(),
                     user.getLastName(),
-                    user.getLogin()
+                    user.getLogin(),
+                    user.getPhoto()
             );
         }
         return null;

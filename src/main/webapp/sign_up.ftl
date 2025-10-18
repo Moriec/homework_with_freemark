@@ -32,7 +32,7 @@
 
 <#macro content>
     <h1>Registration</h1>
-    <form method="post" action="sign_up">
+    <form method="post" action="sign_up" enctype="multipart/form-data">
         Name: <input type="text" name="name" placeholder="name">
         <br>
         Lastname: <input type="text" name="lastname" placeholder="lastname">
@@ -40,6 +40,8 @@
         Login: <input type="text" name="login" placeholder="login" id="login-field"/>
         <br>
         Password: <input type="password" name="password" placeholder="password"/>
+        <br>
+        Photo: <input type="file" name = "file">
         <br><br>
         <input type="submit" value="Sign Up" id="submit-button" disabled/>
     </form>
